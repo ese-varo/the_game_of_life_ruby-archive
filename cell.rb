@@ -1,4 +1,3 @@
-
 class Cell
   attr_accessor :state, :position
   private       :state
@@ -12,23 +11,18 @@ class Cell
     state[:current] == 1 ? true : false
   end
 
-  def alive=(alive)
-    state[:current] = alive
-  end
-
-  def next_state=(alive)
-    state[:next] = alive
-  end
-
   def update_state(neighbors)
-    if alive
-      next_state(0) unless (2..3).include?(neighbors)
+    if alive?
+      kill unless (2..3).include?(neighbors)
     else
-      next_state(1) if neighbors == 3
+      born if neighbors == 3
     end
-    # determine if continues living depending on number of neighbors
   end
 
+private
+  def born
+    state[:next] = 1
+  end
 end
 
 # cell = Cell.new([1, 2], 1)
