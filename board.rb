@@ -19,7 +19,21 @@ class Board
     end
   end
 
-private
+  def update_cells
+    cells.each do |row|
+      row.each { |cell| cell.current_state = cell.next_state }
+    end
+  end
+
+  def render
+    cells.each do |row|
+      row.each do |cell|
+        print cell.current_state
+      end
+      puts
+    end
+    puts
+  end
 
   def alive_neighbors(cell_position)
     x, y = cell_position
