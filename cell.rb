@@ -20,6 +20,10 @@ class Cell
   end
 
 private
+  def kill
+    state[:next] = 0
+  end
+
   def born
     state[:next] = 1
   end
