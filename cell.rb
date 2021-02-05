@@ -1,38 +1,34 @@
 class Cell
-  attr_accessor :state, :position
-  private       :state
+  attr_accessor :current_state, :position
+  attr_reader :next_state
 
   def initialize(position, alive)
-    @position = position
-    @state = { current: alive, next: 0}
+    @position      = position
+    @current_state = alive
+    @next_state    = 0
   end
 
   def alive?
-    state[:current] == 1 ? true : false
+    current_state == 1 ? true : false
   end
 
-  def update_state(neighbors)
+  def new_state(neighbors)
     if alive?
-      kill unless (2..3).include?(neighbors)
+      (2..3).include?(neighbors) ? born : kill
     else
-      born if neighbors == 3
+      neighbors == 3 ? born : kill
     end
   end
 
 private
   def kill
-    state[:next] = 0
+    @next_state = 0
   end
 
   def born
-    state[:next] = 1
+    @next_state = 1
   end
 end
-
-# cell = Cell.new([1, 2], 1)
-# puts cell.alive?
-# cell.alive = false
-# puts cell.alive?
 
 =begin
 
