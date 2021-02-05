@@ -10,9 +10,12 @@ class Board
     end
   end
 
-  def next_status
+  def next_iteration
     cells.each do |row|
-      row.each { |cell| alive_neighbors(cell.position) }
+      row.each do |cell|
+        neighbors = alive_neighbors_counter(cell.position)
+        cell.new_state(neighbors)
+      end
     end
   end
 
