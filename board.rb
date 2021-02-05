@@ -28,11 +28,11 @@ class Board
   def render
     cells.each do |row|
       row.each do |cell|
+        # print cell.current_state == 1 ? "@" : "-"
         print cell.current_state
       end
       puts
     end
-    puts
   end
 
 private
@@ -59,11 +59,6 @@ private
   end
 end
 
-b = Board.new(3)
-b.render
-b.next_iteration
-b.update_cells
-b.render
 
 =begin
 
