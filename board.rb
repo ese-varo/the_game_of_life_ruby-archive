@@ -53,10 +53,9 @@ private
     end
     neighbors
   end
-  
-  def living?
-    1
-    # create random numbers module
+
+  def random_life
+    rand(1..100) > 40 ? 0 : 1
   end
 end
 
