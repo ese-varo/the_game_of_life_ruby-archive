@@ -5,14 +5,9 @@ class Board
 
   def initialize(size)
     @size  = size
-    # @cells = Array.new(size) do |x|
-    #   Array.new(size) { |y| Cell.new([x, y], living?) }
-    # end
-    @cells = [
-      [1, 0, 0],
-      [0, 1, 1],
-      [1, 0, 1]
-    ]
+    @cells = Array.new(size) do |x|
+      Array.new(size) { |y| Cell.new([x, y], random_life) }
+    end
   end
 
   def next_status
@@ -47,10 +42,11 @@ private
   end
 end
 
-
-# b = Board.new(3)
-# pp b.cells
-# b.next_status
+b = Board.new(3)
+b.render
+b.next_iteration
+b.update_cells
+b.render
 
 =begin
 
