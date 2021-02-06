@@ -40,24 +40,23 @@ private
     neighbor_x = x - 1
     neighbor_y = y - 2
     neighbors = 0
-    size.times do
-      size.times do
+    3.times do
+      3.times do
         neighbor_y += 1
         next if (neighbor_x.negative? or neighbor_y.negative?) or
                 (neighbor_x >= size or neighbor_y >= size)
-        neighbors += cells[neighbor_x][neighbor_y].current_state unless (x == neighbor_x && y == neighbor_y)
+        neighbors += cells[neighbor_x][neighbor_y].current_state
       end
       neighbor_x += 1
       neighbor_y = y - 2
     end
-    neighbors
+    neighbors -= cells[x][y].current_state
   end
 
   def random_life
     rand(1..100) > 40 ? 0 : 1
   end
 end
-
 
 =begin
 
