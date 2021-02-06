@@ -21,10 +21,10 @@ class Board
       row.each { |cell| print cell.current_state == 1 ? "██" : "  " }
       puts
     end
+    puts "Press \"ctrl + z\" to exit"
   end
 
   def next_iteration
-    neighbors = alive_neighbors_counter([0,0])
     cells.each do |row|
       row.each do |cell|
         neighbors = alive_neighbors_counter(cell.position)
