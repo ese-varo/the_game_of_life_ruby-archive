@@ -27,10 +27,9 @@ class Board
     neighbors = alive_neighbors_counter([0,0])
     cells.each do |row|
       row.each do |cell|
-        # print cell.current_state == 1 ? "@" : "-"
-        print cell.current_state
+        neighbors = alive_neighbors_counter(cell.position)
+        cell.new_state(neighbors)
       end
-      puts
     end
   end
 
