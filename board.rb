@@ -18,7 +18,7 @@ class Board
 
   def render
     cells.each do |row|
-      row.each { |cell| print cell.current_state == 1 ? "@" : " " }
+      row.each { |cell| print cell.current_state == 1 ? "██" : "  " }
       puts
     end
   end
