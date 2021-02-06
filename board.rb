@@ -12,10 +12,7 @@ class Board
 
   def update_cells
     cells.each do |row|
-      row.each do |cell|
-        neighbors = alive_neighbors_counter(cell.position)
-        cell.new_state(neighbors)
-      end
+      row.each { |cell| cell.current_state = cell.next_state }
     end
   end
 
