@@ -10,7 +10,7 @@ class Board
     end
   end
 
-  def next_iteration
+  def update_cells
     cells.each do |row|
       row.each do |cell|
         neighbors = alive_neighbors_counter(cell.position)
@@ -19,13 +19,14 @@ class Board
     end
   end
 
-  def update_cells
+  def render
     cells.each do |row|
       row.each { |cell| cell.current_state = cell.next_state }
     end
   end
 
-  def render
+  def next_iteration
+    neighbors = alive_neighbors_counter([0,0])
     cells.each do |row|
       row.each do |cell|
         # print cell.current_state == 1 ? "@" : "-"
