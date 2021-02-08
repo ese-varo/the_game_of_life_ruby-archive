@@ -8,6 +8,10 @@ class Cell
     @next_state    = 0
   end
 
+  def to_s
+    @current_state == 1 ? "██" : "  "
+  end
+
   def alive?
     current_state == 1 ? true : false
   end
