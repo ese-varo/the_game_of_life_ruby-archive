@@ -5,9 +5,7 @@ class Board
 
   def initialize(size)
     @size  = size
-    @cells = Array.new(size) do |x|
-      Array.new(size) { |y| Cell.new([x, y], random_life) }
-    end
+    @cells = capture_cells
   end
 
   def update_cells
@@ -50,6 +48,12 @@ private
       neighbor_y = y - 2
     end
     neighbors -= cells[x][y].current_state
+  end
+
+  def capture_cells
+    Array.new(size) do |x|
+      Array.new(size) { |y| Cell.new([x, y], random_life) }
+    end
   end
 
   def random_life
