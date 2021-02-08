@@ -13,7 +13,7 @@ class Cell
   end
 
   def alive?
-    current_state == 1 ? true : false
+    current_state == 1
   end
 
   def new_state(neighbors)
