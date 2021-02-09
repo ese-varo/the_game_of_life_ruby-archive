@@ -33,19 +33,3 @@ private
     @next_state = 1
   end
 end
-
-=begin
-
-  -------------------------
-  x-1,y-1 | x-1,y | x-1,y+1
-  --------|-------|--------
-  x,y-1   | (x,y) | x,y+1
-  --------|-------|--------
-  x+1,y-1 | x+1,y | x+1,y+1
-  -------------------------
-
-  - determine if it's alive or dead
-    - it will handle two 'states'; current and next
-  - its position in the board: (x, y)
-  - number of alive neighbours
-=end
