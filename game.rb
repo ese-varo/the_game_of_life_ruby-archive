@@ -1,10 +1,5 @@
 require_relative 'board'
 class Game
-
-  def initialize
-    @board = nil
-  end
-
   def play
     loop do
       system 'clear'
