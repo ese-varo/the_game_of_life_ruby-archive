@@ -32,22 +32,36 @@ class Board
   end
 
 private
+
   def alive_neighbors_counter(cell_position)
-    x, y = cell_position
-    neighbor_x = x - 1
-    neighbor_y = y - 2
-    neighbors = 0
+    states = set_neighbor_states(cell_position)
     3.times do
-      3.times do
-        neighbor_y += 1
-        next if (neighbor_x.negative? or neighbor_y.negative?) or
-                (neighbor_x >= size or neighbor_y >= size)
-        neighbors += cells[neighbor_x][neighbor_y].current_state
-      end
-      neighbor_x += 1
-      neighbor_y = y - 2
+      3.times { seek_alive_neighbors(states) }
+      states[:neighbor_x] += 1
+      states[:neighbor_y] = states[:y] - 2
     end
-    neighbors -= cells[x][y].current_state
+    states[:neighbors] -= cells[states[:x]][states[:y]].alive? ? 1 : 0
+  end
+
+  def seek_alive_neighbors(states)
+    states[:neighbor_y] += 1
+    unless out_of_board?(states[:neighbor_x], states[:neighbor_y])
+      states[:neighbors] += 1 if cells[states[:neighbor_x]][states[:neighbor_y]].alive?
+    end
+  end
+
+  def set_neighbor_states(position)
+    {
+      neighbor_x: position[0] - 1,
+      neighbor_y: position[1] - 2,
+      neighbors: 0,
+      x: position[0],
+      y: position[1]
+    }
+  end
+
+  def out_of_board?(x, y)
+    [x, y].min.negative? || [x, y].max >= size
   end
 
   def capture_cells
