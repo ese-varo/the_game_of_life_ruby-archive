@@ -6,6 +6,7 @@ def ask_for_board_size
   (3..100).include?(size) ? Game.new(size) : ask_for_board_size
 end
 
-game = ask_for_board_size
+game = Game.new
+game.ask_for_board_size
 game.show_message('welcome.txt')
 game.play

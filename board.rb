@@ -3,7 +3,7 @@ require_relative 'cell'
 class Board
   attr_reader :size, :cells
 
-  def initialize(size)
+  def initialize(size = 100)
     @size  = size
     @cells = capture_cells
   end
